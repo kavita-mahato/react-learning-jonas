@@ -144,8 +144,8 @@ function getBook(id) {
 }
 
 // ---------------------------------------------------------- Destructuring ----------------------------------------------------------
-const book = getBook(3);
 /*
+const book = getBook(3);
 book;
 
 const {author, title, pages, genres, publicationDate, hasMovieAdaptation} = book;
@@ -206,20 +206,20 @@ spanishTranslation;
 */
 // ---------------------------------------------------------- Optional Chaining ----------------------------------------------------------
 
-function getTotalReviewCount(book) {
-  const goodreads = book.reviews?.goodreads?.reviewsCount;
-  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
-  librarything;
-  return goodreads + librarything;
-}
+// function getTotalReviewCount(book) {
+//   const goodreads = book.reviews?.goodreads?.reviewsCount;
+//   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+//   librarything;
+//   return goodreads + librarything;
+// }
 
 // console.log(getTotalReviewCount(book));
 
 // ---------------------------------------------------------- The Array Map Method ----------------------------------------------------------
 
+/*
 const books = getBooks();
 books;
-/*
 const x = [1, 2, 3, 4, 5].map((el) => el * 2);
 console.log(x);
 
@@ -261,7 +261,7 @@ const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
 sortedByPages;
 */
 // ------------------------------------------------------- Working with Immutable Arrays -------------------------------------------------------
-
+/*
 // 1) Add book object to array
 const newBook = {
   id: 6,
@@ -280,3 +280,11 @@ const booksAfterUpdate = booksAfterDelete.map((book) =>
   book.id === 1 ? { ...book, pages: 1210 } : book
 );
 booksAfterUpdate;
+*/
+// ------------------------------------------------------ Asynchronous JavaScript Promises -----------------------------------------------------
+
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+
+console.log("Kavita Mahato");
