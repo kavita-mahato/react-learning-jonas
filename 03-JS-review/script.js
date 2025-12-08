@@ -213,13 +213,13 @@ function getTotalReviewCount(book) {
   return goodreads + librarything;
 }
 
-console.log(getTotalReviewCount(book));
+// console.log(getTotalReviewCount(book));
 
 // ---------------------------------------------------------- The Array Map Method ----------------------------------------------------------
 
 const books = getBooks();
 books;
-
+/*
 const x = [1, 2, 3, 4, 5].map((el) => el * 2);
 console.log(x);
 
@@ -232,3 +232,15 @@ const essentialData = books.map((book) => ({
   reviewsCount: getTotalReviewCount(book),
 }));
 essentialData;
+*/
+// ---------------------------------------------------------- The Array Filter Method ----------------------------------------------------------
+
+const longBooksWithMovie = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+longBooksWithMovie;
+
+const adventureBooks = books
+  .filter((books) => books.genres.includes("adventure"))
+  .map(book => book.title);
+adventureBooks;
