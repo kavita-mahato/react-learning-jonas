@@ -143,8 +143,8 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-// Destructuring
-const book = getBook(2);
+// ---------------------------------------------------------- Destructuring ----------------------------------------------------------
+const book = getBook(3);
 book;
 
 const {author, title, pages, genres, publicationDate, hasMovieAdaptation} = book;
@@ -160,12 +160,12 @@ newGenres;
 const updatedBook = {...book, moviePublicationDate: '2001-12-19', pages:3000};
 updatedBook;
 
-// Template Literals
+// ---------------------------------------------------------- Template Literals ----------------------------------------------------------
 
 // function getYear(str) {
 //   return str.split("-")[0];
 // }
-
+/*
 const getYear = (str) => str.split("-")[0];  // Arrow function
 console.log(getYear(publicationDate));
 
@@ -178,9 +178,9 @@ summary;
 const pagesRange = updatedBook.pages > 1000 ? "over a thousand" : "less than 1000";
 pagesRange;
 console.log(`The book has ${pagesRange} pages`);
-
-// Short Circuiting
-
+*/
+// ---------------------------------------------------------- Short Circuiting ----------------------------------------------------------
+/*
 console.log(true && "Some string");
 console.log(false && "Some string");
 console.log(hasMovieAdaptation && "This book has a movie");
@@ -196,9 +196,19 @@ console.log(book.translations.spanish);
 const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
 spanishTranslation;
 
-console.log(book.reviews.librarything.reviewsCount);
-const countWrong = book.reviews.librarything.reviewsCount || "no data";
-countWrong;
+// console.log(book.reviews.librarything.reviewsCount);
+// const countWrong = book.reviews.librarything.reviewsCount || "no data";
+// countWrong;
 
-const count = book.reviews.librarything.reviewsCount ?? "no data";
-count;
+// const count = book.reviews.librarything.reviewsCount ?? "no data";
+// count;
+*/
+// ---------------------------------------------------------- Optional Chaining ----------------------------------------------------------
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  librarything;
+  return goodreads + librarything;
+}
+
+console.log(getTotalReviewCount(book));
