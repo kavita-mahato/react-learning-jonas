@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './index.css';
 
 const pizzaData = [
     {
@@ -48,22 +49,68 @@ const pizzaData = [
 
 function App() {
     return (
-        <div>
-            <h1>Hello React!</h1>
-            <Pizza />
-            <Pizza />
-            <Pizza />
+        <div className="container">
+            <Header />
+            <Menu />
+            <Footer />
         </div>
     );
 }
 
-function Pizza() {
+function Header() {
     return (
-        <div>
-            <img src='pizzas/spinaci.jpg' alt='Pizza spinacci'/>
-            <h2>Pizza Spinaci</h2>
-            <p>Tomato, mozarella, spinach, and ricotta cheese</p>
+        <header className="header">
+            <h1>Fast React Pizza Co.</h1>
+        </header>
+    );
+}
+
+function Menu() {
+    return (
+        <main className="menu">
+            <h2>Our Menu</h2>
+            <Pizza
+                name="Pizza Spinaci"
+                ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+                photoName="pizzas/spinaci.jpg"
+                price={100}
+            />
+            <Pizza 
+                name="Pizza Funghi"
+                ingredients="Tomato, mushrooms"
+                photoName="pizzas/funghi.jpg"
+                price={120}
+            />
+        </main>
+    );
+}
+
+function Pizza(props) {
+    console.log(props);
+    return (
+        <div className='pizza'>
+            <img src={props.photoName} alt={props.name} />
+            <div>    
+                <h2>{props.name}</h2>
+                <p>{props.ingredients}</p>
+                <span>{props.price + 5}</span>
+            </div>
         </div>
+    );
+}
+
+function Footer() {
+    const hour = new Date().getHours();
+    const openHour = 12;
+    const closeHour = 22;
+    const isOpen = hour >= openHour && hour <= closeHour;
+
+    console.log(isOpen);
+
+    return (
+        <footer className="footer">
+            {new Date().toLocaleTimeString()}. We're currently open.
+        </footer>
     );
 }
 
